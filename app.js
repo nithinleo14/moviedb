@@ -3,8 +3,8 @@ var express = require("express"),
     mongoose = require("mongoose"),
     bodyParser = require("body-parser"),
     methodOverride = require("method-override"),
-    expressSanitizer = require("express-sanitizer"),
-    localtunnel = require("localtunnel");
+    expressSanitizer = require("express-sanitizer");
+// localtunnel = require("localtunnel");
 
 
 //appsetup
@@ -20,19 +20,19 @@ mongoose.connect(uri, { useNewUrlParser: true }, function(err) {
     }
 });
 
-//tunnelsetup
-var tunnel = localtunnel(3000, { subdomain: "moviedb" }, function(err, tunnel) {
-    if (err) {
-        console.log(err);
-    }
-    else {
-        console.log("\n Tunnel Started\n" + tunnel.url);
-        tunnel.url;
-    }
-});
-tunnel.on('close', function() {
-    console.log("Tunnel Closed")
-});
+// //tunnelsetup
+// var tunnel = localtunnel(3000, { subdomain: "moviedb" }, function(err, tunnel) {
+//     if (err) {
+//         console.log(err);
+//     }
+//     else {
+//         console.log("\n Tunnel Started\n" + tunnel.url);
+//         tunnel.url;
+//     }
+// });
+// tunnel.on('close', function() {
+//     console.log("Tunnel Closed")
+// });
 
 mongoose.set('useFindAndModify', false);
 app.set("view engine", "ejs");
@@ -241,6 +241,7 @@ app.get('/movie/all/:page', function(req, res) {
 // });
 
 //listen
-app.listen(3000, tunnel.url, function() {
-    console.log("Server Started!!!");
+var server = app.listen(process.env.PORT, process.env.IP, function() {
+    var port = server.address().port;
+    console.log("Server Started at port: " + port);
 });
