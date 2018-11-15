@@ -1,0 +1,30 @@
+#delete {
+    display: inline;
+}
+
+#yearcolumn {
+    padding-top: 30px;
+}
+
+.rounded.image {
+    margin-right: 0px;
+    margin-left: 18px;
+}
+
+#footer {
+    position: fixed;
+    font-size: 11px;
+    font-weight: lighter;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.ui.pagination.menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 70px;
+}

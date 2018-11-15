@@ -1,0 +1,27 @@
+<div class="ui centered pagination menu">
+  <% if (current == 1) { %>
+    <a class="disabled item">First</li>
+    <% } else { %>
+      <a class="item" href="/movie/all/1">First</a>
+    <% } %>
+      <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+        <% if (i !== 1) { %>
+          <a class="disabled item">...</a>
+          <% } %>
+      <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+            <% if (i == current) { %>
+                <a class="active item"><%= i %></a>
+            <% } else { %>
+                <a class="item" href="/movie/all/<%= i %>"><%= i %></a>
+            <% } %>
+            <% if (i == Number(current) + 4 && i < pages) { %>
+                <a class="disabled item">...</a>
+            <% } %>
+      <% } %>
+      <% if (current == pages) { %>
+          <a class="disabled item">Last</a>
+      <% } else { %>
+          <a class="item" href="/movie/all/<%= pages %>">Last</a>
+      <% } %>
+
+</div>

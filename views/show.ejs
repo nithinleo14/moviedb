@@ -1,0 +1,36 @@
+<% include partials/header %>
+    <div class="ui text container">
+        <div class="ui top attached header">
+            <div class="ui huge header">
+                <%=showmovie.title%>
+
+            </div>
+
+        </div>
+        <!--<div class="ui divider"></div>-->
+        <div class="ui attached segment">
+            <div class="ui grid">
+                <div class="six wide column">
+                    <img class="ui centered rounded image" src="<%=showmovie.poster%>"></img>
+                </div>
+                <div class="ten wide column">
+                    <div id="yearcolumn">
+                        <strong>Year : <span><%=showmovie.year%></span></strong>
+                    </div>
+                    <div class="ui divider"></div>
+                    <div>
+                        <p><strong>Storyline:</strong>
+                            <%- showmovie.plot %>
+                        </p>
+                    </div>
+                    <div class="ui divider"></div>
+                    <a href="/movie/<%=showmovie._id%>/edit" class="ui blue button"><i class="edit icon"></i>Edit</a>
+                    <form id="delete" action="/movie/<%=showmovie._id%>?_method=DELETE" method="POST">
+                        <button class="ui right floated red button"><i class="trash alternate outline icon"></i>Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include partials/footer %>
