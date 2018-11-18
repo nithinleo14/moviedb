@@ -8,9 +8,9 @@ var express = require("express"),
 
 
 //appsetup
-// var uri = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox-6zj5i.mongodb.net/moviesdb?retryWrites=true";
+var uri = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox-6zj5i.mongodb.net/moviesdb?retryWrites=true";
 // var uri = "mongodb://leo:leo12515@ds061839.mlab.com:61839/moviesdb12515?retryWrites=true";
-var uri = "mongodb://leo:leo12515@ds061839.mlab.com:61839/moviesdb12515";
+// var uri = "mongodb://leo:leo12515@ds061839.mlab.com:61839/moviesdb12515";
 mongoose.connect(uri, { useNewUrlParser: true }, function(err) {
     if (err) {
         console.log(err);
@@ -160,7 +160,7 @@ app.get('/movie/all/:page', function(req, res) {
     }
     query.skip = size * (pageNo - 1);
     query.limit = size;
-    query.sort = "awards.wins";
+    query.sort = { "awards.wins": -1 };
 
     // Find some documents
     movie.find({}, { title: 1, poster: 1, plot: 1, year: 1 }, query, function(err, data) {
