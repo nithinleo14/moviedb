@@ -160,10 +160,11 @@ app.get('/movie/all/:page', function(req, res) {
     }
     query.skip = size * (pageNo - 1);
     query.limit = size;
-    query.sort = { "awards.wins": -1 };
+    query.sort = { "imdb.votes": -1 };
+    var projection = { _id: 1, title: 1, poster: 1, year: 1 };
 
     // Find some documents
-    movie.find({}, { _id: 0, title: 1, poster: 1, plot: 1, year: 1 }, query, function(err, data) {
+    movie.find({}, projection, query, function(err, data) {
         // Mongo command to fetch all data from collection.
         if (err) {
             response = { "error": true, "message": "Error fetching data" };
