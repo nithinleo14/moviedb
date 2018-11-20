@@ -28,3 +28,7 @@
     transform: translateX(-50%);
     margin-bottom: 70px;
 }
+
+#index_content {
+    text-align: center;
+}
