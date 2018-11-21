@@ -8,7 +8,7 @@ var express = require("express"),
 
 
 //appsetup
-var uri = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox-6zj5i.mongodb.net/moviesdb?retryWrites=true";
+var uri = "mongodb+srv://moviesdb:moviesdb-12515@sandbox-6zj5i.mongodb.net/moviesdb?retryWrites=true";
 // var uri = "mongodb://leo:leo12515@ds061839.mlab.com:61839/moviesdb12515?retryWrites=true";
 // var uri = "mongodb://leo:leo12515@ds061839.mlab.com:61839/moviesdb12515";
 mongoose.connect(uri, { useNewUrlParser: true }, function(err) {
