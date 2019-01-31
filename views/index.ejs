@@ -1,43 +1,58 @@
 <% include partials/header %>
+    <!--//////////////////////////////-->
 
-    <div class="ui main text container segment">
-        <!--<div class="ui top attached header">-->
-        <div class="ui huge header">Movie Index</div>
-        <!--</div>-->
-        <!--<div class="ui attached segment">-->
-        <div class="ui divider"></div>
+    <!--Content-->
 
-        <%movie.forEach(function(movie){%>
-            <div class="ui items">
-                <div class="item">
-                    <div class="image">
-                        <a href="/movie/<%= movie._id %>" class="ui small image">
-                        <img class="ui rounded image" src="<%=movie.poster%>">
-                        </a>
-                    </div>
-                    <!--</a>-->
-                    <div class="content" id="index_content">
-                        <a href="/movie/<%= movie._id %>" class="header">
-                            <%= movie["title"] %>
-                        </a>
-                        <div class="meta"><span>Year : <%= movie.year %></span></div>
-                        <!--<div class="description">-->
+    <div class="container m-2 p-0 text-light">
+        <h3>Movie
+            <small class="text-muted">Index</small>
+        </h3>
+    </div>
 
-                        <!--    <%- movie.plot %>...-->
-                        <!--</div>-->
-                        <div class="extra">
-                            <a href="/movie/<%= movie._id %>" class="ui blue basic button">Read More</a>
+    <!--Cardbody-->
+    <div class="container-fluid m-0 p-0">
+        <div class="row m-0 p-0 card-deck">
+            <!--<div class="card-deck">-->
+            <%movie.forEach(function(movie){%>
+
+                <div id="card" class="col-4 col-md-2 text-light m-0 p-0 flex-shrink-1 flex-grow-1">
+                    <a href="/movie/<%= movie._id %>">
+                        <div class="img shad">
+                            <img src="<%=movie.poster%>" alt="<%= movie.title %>" class="card-img-top rounded-top" alt="...">
                         </div>
-                    </div>
+                        <div class="card-body rounded-bottom shad flex-shrink-1 flex-grow-1">
+                            <div class="title">
+                                <h5 class="card-title">
+                                    <%= movie["title"] %>
+                                </h5>
+                            </div>
+                            <p class="card-text d-none d-md-block">
+                                <%- movie.plot %>
+                            </p>
+                            <div class="bottom-content d-flex align-items-center justify-content-between">
+                                <h5 class="year p-0  m-0">
+                                    <%= movie.year %>
+                                </h5>
+                                <div class="starts d-flex align-items-center">
+                                    <i class="fas fa-star"></i>
+                                    <h5 class="rating px-2 m-0">
+                                        <%= movie.imdb["rating"] %>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <div class="ui divider"></div>
-            </div>
-            <% }) %>
+
+                <% }) %>
+                    <!--</div>-->
+
+        </div>
     </div>
 
     <% if (pages > 0) { %>
         <% include partials/pagination %>
             <% } %>
 
-
+                <!--/////////////////////////////-->
                 <% include partials/footer %>

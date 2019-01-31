@@ -1,38 +1,274 @@
-#delete {
-    display: inline;
+html,
+body {
+    /*font-family: 'Nunito', sans-serif;*/
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-family: 'Montserrat', sans-serif;
+    /*background: #3d3d3d;*/
+    /*position: fixed;*/
+    width: 98vw;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-#yearcolumn {
-    padding-top: 30px;
+#card a {
+    text-decoration: none;
+    color: white;
 }
 
-.rounded.image {
-    margin-right: 0px;
-    margin-left: 18px;
+#card {
+    position: relative;
+    /*background: #000;*/
+    padding-right: .5rem !important;
+    padding-bottom: 1rem !important;
 }
+
+.container-fluid {
+    /*position: absolute;*/
+    width: 100vw;
+    padding-left: .5rem !important;
+}
+
+.shad {
+    box-shadow: 0.2rem 0.5rem 1rem rgba(0, 0, 0, 0.4)!important;
+}
+
+.card-body {
+    position: relative;
+    bottom: 0;
+    background: #474444;
+    padding: 0.35rem;
+    padding-top: 0.25rem !important;
+    /*box-shadow: 0rem 0.8rem 1rem rgba(0, 0, 0, 0.4)!important;*/
+}
+
+.img.shad {
+    position: relative;
+    height: 24vh;
+    box-sizing: border-box;
+    /*height: 269px;*/
+}
+
+.card-img-top {
+    position: relative;
+    width: 100%;
+
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-title {
+    margin-bottom: .25rem;
+    font-weight: 400;
+    font-size: 3vw;
+}
+
+.title {
+    height: 6.25vh;
+    overflow: scroll;
+}
+
+.year {
+    font-weight: 600;
+    font-size: 2.9vw;
+    /*color: grey;*/
+    color: #979da2;
+}
+
+.rating {
+    color: #f1c211;
+    font-weight: 600;
+    font-size: 2.9vw;
+    padding-left: .25rem !important;
+    padding-right: 0 !important;
+    padding-top: 0.13rem;
+}
+
+.starts .fas {
+    font-weight: 600;
+    font-size: 2.6vw;
+    color: #f1c211
+}
+
+.card-deck {
+    flex-direction: row;
+}
+
+/*p {*/
+
+/*font-family: 'Questrial';*/
+
+/*    font-family: 'Muli';*/
+
+/*    font-weight: 300;*/
+
+/*}*/
+
+/*#delete {*/
+
+/*    display: inline;*/
+
+/*}*/
+
+/*#yearcolumn {*/
+
+/*    padding-top: 30px;*/
+
+/*}*/
+
+/*.rounded.image {*/
+
+/*    margin-right: 0px;*/
+
+/*    margin-left: 18px;*/
+
+/*}*/
 
 #footer {
-    position: fixed;
-    font-size: 11px;
+    position: relative;
+    color: white;
+    background-color: #000;
+    font-size: 0.7rem;
     font-weight: lighter;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     text-align: center;
     margin-bottom: 0;
+    padding: 0.5rem;
+}
+
+p.ui.centered.gray.inverted.header {
+    margin-bottom: 0;
+    /*width: 100vw;*/
+}
+
+.ui.pagination.menu a {
+    color: white;
+    margin: 0.25rem;
 }
 
 .ui.pagination.menu {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 70px;
+    color: white!important;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /*left: 50%;*/
+    /*transform: translateX(-50%);*/
+    /*margin-bottom: 70px;*/
 }
 
-@media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    #index_content {
-        text-align: center;
+.navbar.navbar-dark {
+    justify-content: flex-start;
+}
+
+.navbar-dark .navbar-toggler {
+    border: 0;
+    padding-left: 0;
+}
+
+.navbar-dark .navbar-toggler:focus {
+    outline: none;
+}
+
+.navbar-dark .navbar-toggler-icon {
+    width: 1.3em;
+    height: 1.3em;
+}
+
+.navbar-brand {
+    margin-left: 0.8rem;
+}
+
+/*media*/
+
+/*@media(max-width:420px) {*/
+
+/*.img.shad {*/
+
+/*    height: 12rem;*/
+
+/*
     }
+    
+    */
 
-}
+/*.title {*/
+
+/*    position: relative;*/
+
+/*    height: 3.1rem;*/
+
+/*}*/
+
+/*    .card-title {*/
+
+/*        font-size: 0.7rem;*/
+
+/*    }*/
+
+/*.year {*/
+
+/*    font-size: 0.75rem;*/
+
+/*}*/
+
+/*    .rating {*/
+
+/*        font-size: 0.7rem;*/
+
+/*    }*/
+
+/*    .starts .fas {*/
+
+/*        font-weight: 600;*/
+
+/*        font-size: 0.5rem;*/
+
+/*    }*/
+
+/*}*/
+
+/*@media(max-width:376px) {*/
+
+/*.img.shad {*/
+
+/*    height: 10rem;*/
+
+/*}*/
+
+/*    .title {*/
+
+/*        position: relative;*/
+
+/*        height: 3.2rem;*/
+
+/*    }*/
+
+/*    .card-title {*/
+
+/*        font-size: 0.7rem;*/
+
+/*    }*/
+
+/*    .year {*/
+
+/*        font-size: 0.65rem;*/
+
+/*    }*/
+
+/*    .rating {*/
+
+/*        font-size: 0.7rem;*/
+
+/*    }*/
+
+/*    .starts .fas {*/
+
+/*        font-weight: 600;*/
+
+/*        font-size: 0.5rem;*/
+
+/*    }*/
+
+/*}*/

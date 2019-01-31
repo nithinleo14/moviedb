@@ -9,6 +9,9 @@ var express = require("express"),
 
 //appsetup
 var uri = "mongodb+srv://moviesdb:moviesdb-12515@sandbox-6zj5i.mongodb.net/moviesdb?retryWrites=true";
+// var uri = "mongodb://m001:m001-mongodb@ec2-35-154-210-107.ap-south-1.compute.amazonaws.com:27017/moviesdb?authSource=user-data";
+// var uri = "mongodb://m01:m01-mongodb@35.154.210.107/moviesdb?authSource=moviesdb&retryWrites=true";
+
 // var uri = "mongodb://leo:leo12515@ds061839.mlab.com:61839/moviesdb12515?retryWrites=true";
 // var uri = "mongodb://leo:leo12515@ds061839.mlab.com:61839/moviesdb12515";
 mongoose.connect(uri, { useNewUrlParser: true }, function(err) {
@@ -152,7 +155,7 @@ app.delete("/movie/:id", function(req, res) {
 //Pagination
 app.get('/movie/all/:page', function(req, res) {
     var pageNo = parseInt(req.params.page) || 1; // parseInt(req.query.pageNo)
-    var size = 10;
+    var size = 18;
     var query = {},
         response;
     if (pageNo < 0 || pageNo === 0) {
@@ -161,7 +164,7 @@ app.get('/movie/all/:page', function(req, res) {
     query.skip = size * (pageNo - 1);
     query.limit = size;
     query.sort = { "imdb.votes": -1 };
-    var projection = { _id: 1, title: 1, poster: 1, year: 1 };
+    var projection = { _id: 1, title: 1, poster: 1, year: 1, "imdb.rating": 1 };
 
     // Find some documents
     movie.find({}, projection, query, function(err, data) {
@@ -242,7 +245,7 @@ app.get('/movie/all/:page', function(req, res) {
 // });
 
 //listen
-var server = app.listen(process.env.PORT, process.env.IP, function() {
-    var port = server.address().port;
-    console.log("Server Started at port: " + port);
+var PORT = process.env.PORT || 3000;
+app.listen(process.env.PORT, process.env.IP, function() {
+    console.log("Server Started at port: " + PORT);
 });
