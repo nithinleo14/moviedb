@@ -1,0 +1,44 @@
+<% include partials/header %>
+
+<!--pagination-->
+
+<nav aria-label="Page navigation example">
+  <ul class="list-page pagination justify-content-center flex-wrap">
+    <div class="list-pagination d-flex flex-wrap justify-content-around">
+        <% var string = "" %>
+        <% characters.forEach(function (str){ %>
+            <% if (str._id == current) { %>
+                <li class="page-item active"><a class="page-link" href="#"><%= str._id %></a></li>
+                
+                <% } else { %>
+                <li class="page-item"><a class="page-link" href="/movie/list/<%= str._id %>"><%= str._id %></a></li>
+            <% } %>
+        <% }) %>
+        <script>
+                    
+                </script>
+         
+    </div>
+  </ul>
+</nav>
+
+<!--****************-->
+<div class="list">
+        <ol class="row">
+                <% movie.forEach(function (movie){ %>
+                    <li class="col-6 col-lg-4">
+                        <a href="/movie/<%= movie._id %>">
+                            <%= movie.title %> 
+                            (<%= movie.year %>)
+                        </a>
+                    </li>
+                    <% }) %>
+        </ol>
+        
+
+</div>
+
+
+
+<!--*************-->
+    <% include partials/footer %>

@@ -1,27 +1,136 @@
-<div class="ui centered pagination menu">
-  <% if (current == 1) { %>
-    <a class="disabled item">First</li>
-    <% } else { %>
-      <a class="item" href="/movie/all/1">First</a>
-    <% } %>
-      <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
-        <% if (i !== 1) { %>
-          <a class="disabled item">...</a>
-          <% } %>
-      <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
-            <% if (i == current) { %>
-                <a class="active item"><%= i %></a>
-            <% } else { %>
-                <a class="item" href="/movie/all/<%= i %>"><%= i %></a>
-            <% } %>
-            <% if (i == Number(current) + 4 && i < pages) { %>
-                <a class="disabled item">...</a>
-            <% } %>
-      <% } %>
-      <% if (current == pages) { %>
-          <a class="disabled item">Last</a>
-      <% } else { %>
-          <a class="item" href="/movie/all/<%= pages %>">Last</a>
-      <% } %>
 
-</div>
+  
+  
+<!--<div class="ui centered pagination menu">-->
+<!--  <% if (current == 1) { %>-->
+<!--    <a class="disabled item">First</li>-->
+<!--    <% } else { %>-->
+<!--      <a class="item" href="/movie/all/1">First</a>-->
+<!--    <% } %>-->
+    
+<!--    <%var i =1%>-->
+<!--      <% var j =1%>-->
+<!--          <% if(Number(current)<5){ %>-->
+<!--          <% i=1 %>-->
+<!--          <% j=5 %>-->
+<!--          <% } else { %>-->
+<!--          <a class="disabled item">...</a>-->
+<!--          <% i=Number(current)-2 %>-->
+<!--          <% j=Number(current)+2 %>-->
+<!--          <% } %>-->
+          
+<!--      <% for (; i <= j && i <= pages; i++) { %>-->
+<!--            <% if (i == current) { %>-->
+<!--                <a class="active item"><%= i %></a>-->
+<!--            <% } else { %>-->
+<!--                <a class="item" href="/movie/all/<%= i %>"><%= i %></a>-->
+<!--            <% } %>-->
+<!--            <% if (i == j && i < pages) { %>-->
+<!--                <a class="disabled item">...</a>-->
+<!--            <% } %>-->
+<!--      <% } %>-->
+      
+    <!--<%var cur = Number(current)%>-->
+    <!--  <% var i = (cur >= 5 ? cur - 2 : 1) %>-->
+    <!--    <% if (i !== 1) { %>-->
+    <!--      <a class="disabled item">...</a>-->
+    <!--      <% } %>-->
+          
+    <!--      <%if(i==1){cur=3}%>-->
+    <!--  <% for (; i <= cur+2 && i <= pages; i++) { %>-->
+    <!--        <% if (i == current) { %>-->
+    <!--            <a class="active item"><%= i %></a>-->
+    <!--        <% } else { %>-->
+    <!--            <a class="item" href="/movie/all/<%= i %>"><%= i %></a>-->
+    <!--        <% } %>-->
+    <!--        <% if (i == cur+2 && i < pages) { %>-->
+    <!--            <a class="disabled item">...</a>-->
+    <!--        <% } %>-->
+    <!--  <% } %>-->
+      
+<!--      <% if (current == pages) { %>-->
+<!--          <a class="disabled item">Last</a>-->
+<!--      <% } else { %>-->
+<!--          <a class="item" href="/movie/all/<%= pages %>">Last</a>-->
+<!--      <% } %>-->
+
+<!--</div>-->
+
+<!--<div class="ui centered pagination menu">-->
+<!--  <% if (current == 1) { %>-->
+<!--    <a class="disabled item">First</li>-->
+<!--    <% } else { %>-->
+<!--      <a class="item" href="/movie/all/1">First</a>-->
+<!--    <% } %>-->
+<!--      <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>-->
+<!--        <% if (i !== 1) { %>-->
+<!--          <a class="disabled item">...</a>-->
+<!--          <% } %>-->
+<!--      <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>-->
+<!--            <% if (i == current) { %>-->
+<!--                <a class="active item"><%= i %></a>-->
+<!--            <% } else { %>-->
+<!--                <a class="item" href="/movie/all/<%= i %>"><%= i %></a>-->
+<!--            <% } %>-->
+<!--            <% if (i == Number(current) + 4 && i < pages) { %>-->
+<!--                <a class="disabled item">...</a>-->
+<!--            <% } %>-->
+<!--      <% } %>-->
+<!--      <% if (current == pages) { %>-->
+<!--          <a class="disabled item">Last</a>-->
+<!--      <% } else { %>-->
+<!--          <a class="item" href="/movie/all/<%= pages %>">Last</a>-->
+<!--      <% } %>-->
+
+<!--</div>-->
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <div class="cont">
+ 
+    <% if (current == 1) { %>
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">First</a>
+    </li>
+    <% } else { %>
+    <li class="page-item">
+      <a class="page-link" href="/movie/all/1">First</a>
+    </li>
+    <% } %>
+
+      <%var i = 1%>
+      <% var j = 1%>
+      <% if(Number(current)<5){ %>
+            <% i=1 %>
+            <% j=5 %>
+      <% } else{ %>
+            <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+            <% i=Number(current)-2 %>
+            <% j=Number(current)+2 %>
+      <% } %>
+      <% if(j>pages){i=pages-4 }%>
+            
+      <% for (; i <= j && i <= pages; i++) { %>
+            <% if (i == current) { %>
+                <li class="page-item active"><a class="page-link" href="#"><%= i %></a></li>
+            <% } else { %>
+                <li class="page-item"><a class="page-link" href="/movie/all/<%= i %>"><%= i %></a></li>
+            <% } %>
+            <% if (i == j && i < pages) { %>
+                <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+            <% } %>
+      <% } %>
+          
+    <% if (current == pages) { %>
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Last</a>
+      </li>
+    <% } else { %>
+      <li class="page-item"><a class="page-link" href="/movie/all/<%= pages %>">Last</a>
+    <% } %>
+    </li>
+         
+    </div>
+  </ul>
+</nav>

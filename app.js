@@ -71,6 +71,7 @@ app.get("/", function(req, res) {
     res.redirect("/movie");
 });
 
+
 app.get("/movie", function(req, res) {
     res.redirect("/movie/all/1");
     // movie.find({}, function(err, foundmovie) {
@@ -84,6 +85,34 @@ app.get("/movie", function(req, res) {
     // });
 
 });
+
+
+app.get('/movie/list/:char', function(req, res) {
+    var pattern = "^" + req.params.char;
+    console.log(pattern);
+    movie.find({ title: { "$regex": pattern, "$options": "i" } }, { title: 1, year: -1, _id: 1 }, function(err, data) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            var query = [
+                { $project: { _id: 1, str: { $toLower: { $substrCP: ["$title", 0, 1] } } } },
+                { $group: { _id: "$str", count: { $sum: 1 } } },
+                { $sort: { _id: 1 } }
+            ];
+            movie.aggregate(query, function(err, str) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.render("newer", { movie: data, characters: str, current: req.params.char });
+                }
+            });
+        }
+    });
+});
+
+
 
 //new
 app.get("/movie/new", function(req, res) {
@@ -189,6 +218,11 @@ app.get('/movie/all/:page', function(req, res) {
     });
 });
 
+
+
+
+
+
 // app.get('/movie/all/:page', function(req, res) {
 //     var pageNo = parseInt(req.params.page) || 1; // parseInt(req.query.pageNo)
 //     var size = 10;
@@ -242,6 +276,14 @@ app.get('/movie/all/:page', function(req, res) {
 //     //     }
 
 //     // });
+
+
+
+
+// link.addEventListener("click", function() {
+//     var active = document.getElementsByClassName("active");
+//     active[0].className = active[0].className.replace("active", "");
+//     this.className += " active";
 // });
 
 //listen
