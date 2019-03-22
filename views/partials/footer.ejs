@@ -23,12 +23,59 @@
 
 
   </footer>
-  <p>Developed by Nithin A N &copy; Leo</p>
+  <a class="up-button" href="#" style=""><i class="fas fa-chevron-up"></i></a>
+  <p>Created by Nithin A N &copy; Leo</p>
 </div>
 
 </div>
 <!--page-segment-->
 
+
+<script>
+  //Active menu button
+  (function() {
+    // var nav = document.getElementById('nav'),
+    var link = window.document.querySelectorAll('.nav-item .nav-link');
+    var active = window.document.getElementsByClassName("selected");
+    active[0].className = active[0].className.replace(" selected", "");
+    var current = window.location.pathname.split('/', 3)[2];
+    for (var i = 0; i < link.length; i++) {
+      if (link[i].pathname.split("/", 3)[2] == current) {
+        link[i].className += " selected";
+      }
+    }
+  })();
+</script>
+
+
+<script>
+  $(document).ready(function() {
+
+    // $(document).click(function(event) {
+    //   var clickover = $(event.target);
+    //   var _opened = $(".navbar-collapse").hasClass("navbar-collapse in");
+    //   if (_opened === true && !clickover.hasClass("navbar-toggle")) {
+    //     $("button.navbar-toggle").click();
+    //   }
+    // });
+
+
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 200) {
+        $(".up-button").fadeIn();
+      }
+      else {
+        $(".up-button").fadeOut();
+      }
+    });
+
+    $(".up-button").click(function() {
+      $("html, body").animate({ scrollTop: 0 }, 300);
+      return false;
+    });
+
+  });
+</script>
 
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>-->
 <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>-->

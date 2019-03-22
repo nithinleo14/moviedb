@@ -1,30 +1,297 @@
 <% include partials/header %>
+    <% include partials/navmenu %>
 
-    <div class="ui main text raised container segment">
-        <div class="ui huge header">Add New Movie</div>
-        <form class="ui form" action="/movie" method="POST">
-            <div class="field">
-                <label>Title</label>
-                <input type="text" name="movie[title]" placeholder="Title">
-            </div>
-            <div class="field">
-                <label>Year</label>
-                <input type="text" name="movie[year]" placeholder="Year">
-            </div>
-            <div class="field">
-                <label>Image</label>
-                <input type="text" name="movie[poster]" placeholder="Poster">
-            </div>
-            <div class="field">
-                <label>Storyline</label>
-                <textarea name="movie[plot]" placeholder="Plot"></textarea>
-            </div>
+        <!--backbutton-->
+        <button class="back btn" type="button" onclick="history.back(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
 
-            <button class="positive ui button" type="submit">Submit</button>
-        </form>
+        <div class="container mt-5 pt-4 mb-5 text-light">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <label for="inputTitle">Title</label>
+                        <input type="text" class="form-control" id="inputTitle" placeholder="Movie Title">
+                    </div>
 
-    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-4">
+                        <label for="inputYear">Year</label>
+                        <input type="number" class="form-control" id="inputYear" placeholder="Year">
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="inputRate">Rated</label>
+                        <select class="form-control" id="inputRate">
+                          <option>PG-13</option>
+                          <option>R</option>
+                          <option>UNRATED</option>
+                          <option>G</option>
+                          <option>APPROVED</option>
+                          <option>PG</option>
+                          <option>PASSED</option>
+                          <option>NC-17</option>
+                          <option>X</option>
+                          <option>M</option>
+                          <option>TV-MA</option>
+                          <option>TV-14</option>
+                          <option>S</option>
+                          <option>TV-G</option>
+                          <option>TV-PG</option>
+                          <option>15</option>
+                          <option>T</option>
+                          <option>A</option>
+                          <option>GP</option>
+                          <option>Approved</option>
+                          <option>U</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="inputRuntime">Runtime(mins)</label>
+                        <input type="number" class="form-control" id="inputRuntime" placeholder="Runtime">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputPlot">Plot</label>
+                    <textarea class="form-control" id="inputPlot" rows="3"></textarea>
+                </div>
 
 
- 
-    <% include partials/footer %>
+                <div class="form-row" id="genres-row">
+                    <!--<div class="list">-->
+                    <label for="">Genres</label>
+                    <ul class="row">
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">Western</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                <label class="custom-control-label" for="customCheck2">Comedy</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                <label class="custom-control-label" for="customCheck3">Action</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                <label class="custom-control-label" for="customCheck4">Crime</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck5">
+                                <label class="custom-control-label" for="customCheck5">Drama</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck6">
+                                <label class="custom-control-label" for="customCheck6">Musical</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck7">
+                                <label class="custom-control-label" for="customCheck7">Thriller</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck8">
+                                <label class="custom-control-label" for="customCheck8">Animation</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck9">
+                                <label class="custom-control-label" for="customCheck9">Family</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck10">
+                                <label class="custom-control-label" for="customCheck10">Fantasy</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck11">
+                                <label class="custom-control-label" for="customCheck11">Documentary</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck12">
+                                <label class="custom-control-label" for="customCheck12">Sci-Fi</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck13">
+                                <label class="custom-control-label" for="customCheck13">Romance</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck14">
+                                <label class="custom-control-label" for="customCheck14">Biography</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck15">
+                                <label class="custom-control-label" for="customCheck15">Mystery</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck16">
+                                <label class="custom-control-label" for="customCheck16">Horror</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck17">
+                                <label class="custom-control-label" for="customCheck17">Music</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck18">
+                                <label class="custom-control-label" for="customCheck18">History</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck19">
+                                <label class="custom-control-label" for="customCheck19">War</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck20">
+                                <label class="custom-control-label" for="customCheck20">Short</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck21">
+                                <label class="custom-control-label" for="customCheck21">Film-Noir</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck22">
+                                <label class="custom-control-label" for="customCheck22">Sport</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck23">
+                                <label class="custom-control-label" for="customCheck23">Talk-Show</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck24">
+                                <label class="custom-control-label" for="customCheck24">News</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck25">
+                                <label class="custom-control-label" for="customCheck25">Reality-TV</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck26">
+                                <label class="custom-control-label" for="customCheck26">Adult</label>
+                            </div>
+                        </li>
+                        <li class="col-6 col-lg-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck27">
+                                <label class="custom-control-label" for="customCheck27">Game-Show</label>
+                            </div>
+                        </li>
+                    </ul>
+                    <!--</div>-->
+                </div>
+                <div class="form-group">
+                    <label for="inputDirector">Director</label>
+                    <input type="text" class="form-control" id="inputDirector" placeholder="Christopher Nolan">
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="inputActors">Actors</label>
+                        <textarea class="form-control" id="inputActors" rows="3"></textarea>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="inputWriters">Writers</label>
+                        <textarea class="form-control" id="inputWriters" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputPoster">Poster</label>
+                        <input type="text" class="form-control" id="inputPoster" placeholder="Poster URL">
+                    </div>
+
+                </div>
+                <div class="form-row imdb">
+                    <label class="col-12" for="">IMDb</label>
+                    <div class="form-group col-4">
+                        <label for="inputImdb-id">IMDb id</label>
+                        <input type="text" class="form-control" id="inputImdb-id" placeholder="tt0064116">
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="inputImdb-rating">IMDb rating</label>
+                        <input type="number" class="form-control" id="inputImdb-rating" placeholder="1-10">
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="inputImdb-votes">IMDb votes</label>
+                        <input type="number" class="form-control" id="inputImdb-votes" placeholder="Total Votes">
+                    </div>
+                </div>
+
+                <div class="form-row awards">
+                    <label class="col-12" for="">Awards</label>
+                    <div class="form-group col-3">
+                        <label for="inputWins">Wins</label>
+                        <input type="number" class="form-control" id="inputWins" placeholder="Number">
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="inputNominations">Nominations</label>
+                        <input type="number" class="form-control" id="inputNominations" placeholder="Number">
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="inputAwards-text">Awards-text</label>
+                        <input type="text" class="form-control" id="inputAwards-text" placeholder="Oscars and other awards">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
+        </div>
+
+
+        <script>
+            $(function() {
+                $(document).scroll(function() {
+                    var $nav = $(".navmenu");
+                    $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+                });
+            });
+        </script>
+
+        <% include partials/footer %>

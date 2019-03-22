@@ -1,0 +1,62 @@
+<nav class="navmenu navbar navbar-dark navbar-expand-lg justify-content-end" style=''>
+
+
+    <a class="navbar-brand pl-md-3  d-md-inline mr-auto ml-5" href="/movie" style=><i class="fas fa-film pr-2"></i>MovieDB</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle Navigation">
+            <span class="navbar-iconbar bar1"></span>
+            <span class="navbar-iconbar bar2"></span>
+            <span class="navbar-iconbar bar3"></span>
+        </button>
+    <div class="collapse navbar-collapse align-items-center justify-content-end" id="navLinks">
+        <ul class="navbar-nav ml-auto px-2 justify-content-end">
+            <li class="nav-item">
+                <a href="/movie/all/1" class="nav-link selected">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/movie/new" class="nav-link">Add Movie</a>
+            </li>
+
+            <li class="nav-item">
+
+                <a href="/movie/list/a" class="nav-link" id="list-menu">List</a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/" class="nav-link">Search</a>
+            </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link">Sign Up</a>
+            </li>
+
+
+        </ul>
+        <!--<ul class="navbar-nav justify-content-end">-->
+
+        <!--</ul>-->
+
+    </div>
+</nav>
+
+<script>
+    $(document).ready(function() {
+        $(".navmenu .navbar-toggler").click(function() {
+            var opened = $("#navLinks").hasClass("collapse show");
+            if (opened === true) {
+                $(".navmenu").css("background", "none");
+                $(".navmenu").css("transition-duration", "0.6s");
+                // $(".navmenu .navbar-brand").css('visibility', 'hidden');
+                // $(".navmenu .navbar-brand").css("transition-duration", "0.2s");
+            }
+            else {
+                $(".navmenu").css("background-color", "black");
+                $(".navmenu").css("transition-duration", "0.5s");
+                // $(".navmenu .navbar-brand").css('visibility', 'visible');
+    
+            }
+        });
+    });
+</script>

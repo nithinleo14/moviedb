@@ -14,12 +14,10 @@
     <!--FontAwesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <!--Google Font-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
     <!--<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600|Questrial|Muli:300,400,600|Roboto:300,400,500|Open+Sans:300,400,600|Montserrat:300,400,500,600" rel="stylesheet">-->
     
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 
     <title>Movie App</title>
 
@@ -27,84 +25,4 @@
 </head>
 
 <body>
-
     <div class="page-container">
-
-        <!--<div class="ui inverted segment">-->
-        <!--    <div class="ui inverted secondary menu">-->
-        <!--        <div class="header item"><a href="/movie"><i class="film icon"></i> MovieDB </a></div>-->
-        <!--        <a class="active item" href="/movie">Home</a>-->
-        <!--        <a class="item" href="/movie/new">Add Movie</a>-->
-        <!--        <a class="item">Search</a>-->
-        <!--        <div class="right menu">-->
-        <!--            <a class="right floated item">Login</a>-->
-        <!--            <a class="right floated item">Sign Up</a>-->
-        <!--        </div>-->
-        <!--    </div>-->
-        <!--</div>-->
-
-
-        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle Navigation">
-            <span class="navbar-iconbar bar1"></span>
-            <span class="navbar-iconbar bar2"></span>
-            <span class="navbar-iconbar bar3"></span>
-        </button>
-            <a class="navbar-brand pl-md-3" href="/movie"><i class="fas fa-film pr-2"></i>MovieDB</a>
-            <div class="collapse navbar-collapse align-items-center" id="navLinks">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a href="/movie/all/1" class="pr-4 nav-link selected">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="/movie/new" class="pr-4 nav-link">Add Movie</a>
-                    </li>
-
-                    <li class="nav-item" >
-                        
-                        <a href="/movie/list/a" class="pr-4 nav-link" id="list-menu">List</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="/" class="pr-4 nav-link">Search</a>
-                    </li>
-
-
-                </ul>
-                <ul class="navbar-nav justify-content-end">
-                    <li class="nav-item">
-                        <a href="/" class="nav-link">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/" class="nav-link">Sign Up</a>
-                    </li>
-                </ul>
-
-            </div>
-        </nav>
-
-        <script>
-            //Active menu button
-            (function() {
-                // var nav = document.getElementById('nav'),
-                var link = window.document.querySelectorAll('.nav-item .nav-link');
-                var active = window.document.getElementsByClassName("selected");
-                active[0].className = active[0].className.replace(" selected", "");
-                var current = window.location.pathname.split('/',3)[2];
-                for (var i = 0; i < link.length; i++) {
-                    if (link[i].pathname.split("/",3)[2] == current) {
-                        link[i].className += " selected";
-                    }
-                }
-            })();
-        </script>
-
-        <script>
-            $(function() {
-                $(document).click(function(event) {
-                    $('.navbar-collapse').collapse('hide');
-                });
-            });
-        </script>

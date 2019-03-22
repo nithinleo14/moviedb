@@ -1,4 +1,5 @@
 <% include partials/header %>
+<% include partials/navbar %>
     <!--//////////////////////////////-->
 
     <!--Content-->
@@ -10,15 +11,15 @@
     </div>
 
     <!--Cardbody-->
-    <div class="container-fluid m-0 p-0">
+    <div class="main container-fluid m-0 p-0">
         <div class="row m-0 p-0 card-deck">
             <!--<div class="card-deck">-->
             <%movie.forEach(function(movie){%>
 
                 <div id="card" class="col-4 col-md-2 text-light m-0 p-0 flex-shrink-1 flex-grow-1">
                     <a href="/movie/<%= movie._id %>">
-                        <div class="img shad" style="background-image: url(<%=movie.poster%>)">
-                            <img src="<%=movie.poster%>" alt="<%= movie.title %>" class="card-img-top rounded-top" alt="...">
+                        <div class="img shad rounded-top" style="background-image: url(<%=movie.poster%>)">
+                            
                         </div>
                         <div class="card-body rounded-bottom shad flex-shrink-1 flex-grow-1">
                             <div class="title">

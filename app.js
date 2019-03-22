@@ -105,7 +105,7 @@ app.get('/movie/list/:char', function(req, res) {
                     console.log(err);
                 }
                 else {
-                    res.render("newer", { movie: data, characters: str, current: req.params.char });
+                    res.render("list", { movie: data, characters: str, current: req.params.char });
                 }
             });
         }
@@ -139,6 +139,7 @@ app.get("/movie/:id", function(req, res) {
             console.log(err);
         }
         else {
+            console.log(foundmovie);
             res.render("show", { showmovie: foundmovie });
         }
     });
@@ -187,6 +188,7 @@ app.get('/movie/all/:page', function(req, res) {
     var size = 18;
     var query = {},
         response;
+    // console.log("home");
     if (pageNo < 0 || pageNo === 0) {
         res.redirect("back");
     }
@@ -217,8 +219,6 @@ app.get('/movie/all/:page', function(req, res) {
 
     });
 });
-
-
 
 
 

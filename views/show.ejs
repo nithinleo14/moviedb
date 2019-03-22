@@ -1,48 +1,185 @@
 <% include partials/header %>
-    <div class="wrapper">
-        <div class="container-fluid">
+    <div class="d-none d-md-block">
+        <% include partials/navbar %>
+    </div>
+    <div class="d-md-none" >
+        <style type="text/css" scoped>
+        .navmenu .navbar-brand{
+            visibility:hidden;
+        }
+    </style>
+        <% include partials/navmenu %>
+    </div>
+    <button class="back btn" type="button" onclick="history.back(-1)">
+        <i class="fas fa-chevron-left"></i>
+    </button>
 
+    <div class="main-segment">
+        <div class="poster" style="background-image: url(<%=showmovie.poster%>)"></div>
+        <div class="main-adjust">
+            <div class="movie-contents text-light">
+                <h5 class="year d-md-none m-0">
+                    (<%=showmovie.year%>)
+                </h5>
+                <h3 id="movietitle" class="d-md-none m-0 sticky-top">
+                    <%=showmovie.title%>
+                </h3>
+                <div class="movie-others d-md-none pb-1">
+
+                    <div class="pggenre-segment px-1">
+
+                        <p class="m-0">
+                            <%if(showmovie.type!= 'movie'){%>
+                                <span class="pr-1"><%=showmovie.type%>  </span>
+                            <%}%>
+                            <%if(showmovie.rated){%>
+                                <span class="pr-1"><%=showmovie.rated%>  </span> |
+                            <%}%>
+                            <span class="px-1"><%=showmovie.runtime%> mins</span> |
+                            <% showmovie.genres.forEach(function(movie){ %>
+                                <span class=" mx-1"><u><%=movie%></u></span>
+                                <% }) %>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="star-rating d-flex align-items-baseline mt-2">
+                    <div class="star-container">
+
+                        <div class="star-base">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+
+                        <div class="star-rate" style="width: <%= showmovie.imdb["rating"] *10 %>%">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <h5 id="rating" class="pl-2">
+                        <%= showmovie.imdb["rating"] %><span>/10</span></%>
+                    </h5>
+                    <div class="imdb d-inline pl-4">
+                        <a href="https://www.imdb.com/title/<%= showmovie.imdb["id"] %>"><i class="fab fa-imdb" style="color: #ffc107"></i></a>
+                    </div>
+                </div>
+
+                <div class="movie-details row m-0 py-2">
+                    <div class="movie-poster col-4 p-0">
+                        <div class="bgposter" style="background-image: url(<%=showmovie.poster%>)"></div>
+                    </div>
+                    <div class="details-main col-8 p-0 pl-3 align-self-center">
+                        <div class="movie-title d-none d-md-block">
+                            <h3>
+                                <%=showmovie.title%>
+                            </h3>
+                        </div>
+                        <div class="details-segment">
+
+                            <table class="">
+                                <tbody>
+                                    <tr>
+                                        <td nowrap scope="row" class="table-heading">Run Time : </th>
+                                            <td class="pl-1">
+                                                <%=showmovie.runtime%> mins
+                                            </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row" class="table-heading">Actors : </th>
+                                            <td class="pl-1">
+                                                <%=showmovie.actors%>
+                                            </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row" class="table-heading">Director : </th>
+                                            <td class="pl-1">
+                                                <%=showmovie.director%>
+                                            </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row" class="table-heading">Writers : </th>
+                                            <td class="pl-1">
+                                                <%=showmovie.writers%>
+                                            </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="plot py-3">
+                    <h6>Storyline</h6>
+
+                    <p>
+                        <%=showmovie.plot%>
+                    </p>
+
+                </div>
+                <div class="others">
+                    <div class="country mb-3">
+                        <h6 class="m-0 p-0">Country of Origin </h6><span><%=showmovie.countries%></span>
+                    </div>
+                    <div class="awards mb-3">
+                        <h6 class="m-0 p-0 mb-1">Awards </h6>
+                        <div class="oscar">
+                            <%=showmovie.awards["text"].split('.')[0]%>
+                        </div>
+                        <div class="another m-0 p-0">
+                            <%=showmovie.awards["text"].split('.')[1]%>
+                        </div>
+                        <p class="m-0 p-0">Wins:<span><%=showmovie.awards["wins"]%></span></p>
+                        <p class="m-0 p-0">Nominations:<span><%=showmovie.awards["nominations"]%></span></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <script>
+        
+    $(document).ready(function() {
+        $(function(){
+            var stickytitle = $('#movietitle').offset().top;
+
+        $(window).scroll(function() {
+            if ($(window).scrollTop()+30 > stickytitle) {
+                $('#movietitle').addClass('adjust');
+            }
+            else {
+                $('#movietitle').removeClass('adjust');
+            }
+        });
+        });
+        
+
+        $(".navmenu .navbar-toggler").click(function() {
+            var opened = $("#navLinks").hasClass("collapse show");
+            if (opened === true) {
+                $(".navmenu .navbar-brand").css('visibility', 'hidden');
+                $(".navmenu .navbar-brand").css("transition-duration", "0.2s");
+            }
+            else {
+                $(".navmenu .navbar-brand").css('visibility', 'visible');
+    
+            }
+        });
+    });
+</script>
 
 
+    <!--<div class="adjust" style="position:relative;display:block"></div>-->
 
-
-
-
-    <!--<div class="ui text container">-->
-    <!--    <div class="ui top attached header">-->
-    <!--        <div class="ui huge header">-->
-    <!--            <%=showmovie.title%>-->
-
-    <!--        </div>-->
-
-    <!--    </div>-->
-    <!--<div class="ui divider"></div>-->
-    <!--    <div class="ui attached segment">-->
-    <!--        <div class="ui grid">-->
-    <!--            <div class="six wide column">-->
-    <!--                <img class="ui centered rounded image" src="<%=showmovie.poster%>"></img>-->
-    <!--            </div>-->
-    <!--            <div class="ten wide column">-->
-    <!--                <div id="yearcolumn">-->
-    <!--                    <strong>Year : <span><%=showmovie.year%></span></strong>-->
-    <!--                </div>-->
-    <!--                <div class="ui divider"></div>-->
-    <!--                <div>-->
-    <!--                    <p><strong>Storyline:</strong>-->
-    <!--                        <%- showmovie.plot %>-->
-    <!--                    </p>-->
-    <!--                </div>-->
-    <!--                <div class="ui divider"></div>-->
-    <!--                <a href="/movie/<%=showmovie._id%>/edit" class="ui blue button"><i class="edit icon"></i>Edit</a>-->
-    <!--                <form id="delete" action="/movie/<%=showmovie._id%>?_method=DELETE" method="POST">-->
-    <!--                    <button class="ui right floated red button"><i class="trash alternate outline icon"></i>Delete</button>-->
-    <!--                </form>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    </div>
 
     <% include partials/footer %>
