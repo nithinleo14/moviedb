@@ -102,15 +102,20 @@ body {
 
 .card-title {
     margin-top: .2rem;
+    margin-bottom: .2rem;
     font-weight: 400;
     font-size: 0.9rem;
     text-align: center;
 }
 
 .title {
-    height: 2.25rem;
+    height: 2.8rem;
     overflow: scroll;
     /*margin-top: .25rem;*/
+}
+.title::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 
 .year {
@@ -121,7 +126,7 @@ body {
 }
 
 .card-body .bottom-content {
-    margin-top: 0.3rem;
+    /*margin-top: 0.3rem;*/
     padding-right: .1rem
 }
 
