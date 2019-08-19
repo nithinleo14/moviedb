@@ -1,5 +1,5 @@
 # MOVIEDB	
-moviedb.leoirus.in
+[moviedb.leoirus.in]
 MovieDB is a responsive and intuitive Web Application to find the favourite movies and its details. Built as a mobile-first layout and also has other layouts for Tablets, Desktops and Extra Large screens.
 Build Stack
 NodeJS, ExpressJS, Mongoose.js, MongoDB, Bootstrap, jQuery, JavaScript, HTML, CSS, AWS EC2
