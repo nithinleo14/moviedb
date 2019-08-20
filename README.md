@@ -11,3 +11,5 @@ NodeJS, ExpressJS, Mongoose.js, MongoDB, Bootstrap, jQuery, JavaScript, HTML, CS
 * On the backend an **Express/Node.js** app lives on AWS Cloud EC2 with web server NGINX .
 * **MongoDB** created as **ReplicaSets** in 3 different Private EC2s with no access to the internet on AWS for High Data Availability and Security interacts with the app using Mongoose.js and returns the information to the user. 	
 * Private EC2s connects only with one EC2 where the app lives which has access to the public internet. 
+
+![MovieDB](public/assets/moviedb.gif)
